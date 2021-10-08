@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HomeScreen from "./components/screens/HomeScreen";
+import { HashRouter as Router, Route } from "react-router-dom";
+import ProductScreen from "./components/screens/ProductScreen";
+import CartScreen from "./components/screens/CartScreen";
+import LoginScreen from "./components/screens/LoginScreen";
+import RegisterScreen from "./components/screens/RegisterScreen";
+import ProfileScreen from "./components/screens/ProfileScreen";
+import ShippingScreen from "./components/screens/ShippingScreen";
+import PaymentScreen from "./components/screens/PaymentScreen";
+import PlaceOrderScreen from "./components/screens/PlaceOrderScreen";
+import OrderScreen from "./components/screens/OrderScreen";
+import UserListScreen from "./components/screens/UserListScreen";
+import UserEditScreen from "./components/screens/UserEditScreen";
+import ProductListScreen from "./components/screens/ProductListScreen";
+import ProductEditScreen from "./components/screens/ProductEditScreen";
+import OrderListScreen from "./components/screens/OrderListScreen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <Route path="/" component={HomeScreen} exact />
+          <Route path="/login" component={LoginScreen} />
+          <Route path="/register" component={RegisterScreen} />
+          <Route path="/profile" component={ProfileScreen} />
+          <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/cart/:id?" component={CartScreen} />
+          <Route path="/shipping" component={ShippingScreen} />
+          <Route path="/payment" component={PaymentScreen} />
+          <Route path="/placeorder" component={PlaceOrderScreen} />
+          <Route path="/order/:id" component={OrderScreen} />
+          <Route path="/admin/orderlist" component={OrderListScreen} />
+          <Route path="/admin/userlist" component={UserListScreen} />
+          <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+          <Route path="/admin/productlist" component={ProductListScreen} />
+          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
+        </Container>
+      </main>
+      <Footer />
+    </Router>
   );
 }
 
